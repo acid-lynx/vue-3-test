@@ -1,35 +1,20 @@
-import { createStore } from 'vuex'
+// @ts-ignore
+import { createStore, useStore as baseUseStore, Store } from 'vuex';
+import type { InjectionKey } from 'vue';
+import type { RootState } from '@/utils/types';
 
-export interface State {
-  count: number
+import horses from './modules/horses';
+import race from './modules/race';
+
+export const key: InjectionKey<Store<RootState>> = Symbol();
+
+export function useStore(): Store<RootState> {
+  return baseUseStore(key);
 }
 
-export default createStore<State>({
-  state: {
-    count: 0,
+export default createStore<RootState>({
+  modules: {
+    horses,
+    race,
   },
-  getters: {
-    doubleCount(state): number {
-      return state.count * 2
-    },
-  },
-  mutations: {
-    increment(state) {
-      state.count++
-    },
-    decrement(state) {
-      state.count--
-    },
-    setCount(state, payload: number) {
-      state.count = payload
-    },
-  },
-  actions: {
-    incrementAsync({ commit }) {
-      setTimeout(() => {
-        commit('increment')
-      }, 1000)
-    },
-  },
-  modules: {},
-})
+});
