@@ -19,3 +19,6 @@ export const Actions = {
   GENERATE_ROUNDS: 'generateRounds',
   START_RACE: 'startRace',
 } as const;
+
+export * from './modules/horses/horsesTypes.ts';
+export * from './modules/race/raceTypes.ts';

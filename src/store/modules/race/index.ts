@@ -12,11 +12,11 @@ import {
   calculateDistanceFactor,
   simulateRaceTick,
 } from '@/utils/services';
-import { Mutations, Getters, Actions } from '../types';
+import { Mutations, Getters, Actions } from '../../types.ts';
 
 type RaceContext = ActionContext<RaceState, RootState>;
 
-const race: Module<RaceState, RootState> = {
+const index: Module<RaceState, RootState> = {
   namespaced: true,
 
   state: (): RaceState => ({
@@ -122,4 +122,4 @@ const race: Module<RaceState, RootState> = {
   },
 };
 
-export default race;
+export default index;

@@ -1,5 +1,5 @@
 import { MAX_CONDITION, BASE_DISTANCE } from '@/utils/constants';
-import type { RaceHorse, RaceResult } from '@/utils/types';
+import type { RaceHorse, RaceResult } from '@/store/types';
 
 export const calculateDistanceFactor = (distance: number): number => {
   return BASE_DISTANCE / distance;
