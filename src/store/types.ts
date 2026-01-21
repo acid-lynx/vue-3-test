@@ -22,3 +22,4 @@ export const Actions = {
 
 export * from './modules/horses/horsesTypes.ts';
 export * from './modules/race/raceTypes.ts';
+export * from './index.ts';

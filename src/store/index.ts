@@ -1,24 +1,21 @@
 // @ts-ignore
 import { createStore, useStore as baseUseStore, Store } from 'vuex';
 import type { InjectionKey } from 'vue';
-export const key: InjectionKey<Store<RootState>> = Symbol();
 
 // store modules
-import insex from './modules/horses/insex.ts';
+import horses from './modules/horses';
+import race from './modules/race';
 
-import index from './modules/race';
 // types
-
-import { HorsesTypes, Round } from "@/utils/types";
+import type { HorsesState } from './modules/horses/horsesTypes';
+import type { RaceState } from './modules/race/raceTypes';
 
 export interface RootState {
-  horses: HorsesTypes[];
-  race: {
-    rounds: Round[];
-    currentRoundIndex: number;
-    isRacing: boolean;
-  }
+  horses: HorsesState;
+  race: RaceState;
 }
+
+export const key: InjectionKey<Store<RootState>> = Symbol();
 
 export function useStore(): Store<RootState> {
   return baseUseStore(key);
@@ -26,7 +23,7 @@ export function useStore(): Store<RootState> {
 
 export default createStore<RootState>({
   modules: {
-    horses: insex,
-    race: index,
+    horses,
+    race,
   },
 });

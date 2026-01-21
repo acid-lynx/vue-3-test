@@ -11,3 +11,9 @@ export interface Round {
   isFinished: boolean;
   results: RaceResult[];
 }
+
+export interface RaceState {
+  rounds: Round[];
+  currentRoundIndex: number;
+  isRacing: boolean;
+}

@@ -6,7 +6,8 @@ import type {
   RaceState,
   Round,
   RootState,
-} from '@/utils/types';
+} from '@/store/types';
+
 import { HORSES_PER_ROUND, RACE_DISTANCES } from '@/utils/constants';
 import {
   calculateDistanceFactor,

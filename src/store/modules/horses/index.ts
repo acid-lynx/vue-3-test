@@ -1,6 +1,6 @@
 // @ts-ignore
 import type { Module, ActionContext } from 'vuex';
-import type { HorsesTypes, HorsesState, RootState } from '@/utils/types';
+import type { Horse, HorsesState, RootState } from '@/store/types';
 import {
   TOTAL_HORSES,
   generateColor,
@@ -11,7 +11,7 @@ import { Mutations, Getters, Actions } from '../../types.ts';
 
 type HorsesContext = ActionContext<HorsesState, RootState>;
 
-const insex: Module<HorsesState, RootState> = {
+const index: Module<HorsesState, RootState> = {
   namespaced: true,
 
   state: (): HorsesState => ({
@@ -23,14 +23,14 @@ const insex: Module<HorsesState, RootState> = {
   },
 
   mutations: {
-    [Mutations.SET_HORSES](state: HorsesState, horses: HorsesTypes[]) {
+    [Mutations.SET_HORSES](state: HorsesState, horses: Horse[]) {
       state.horsesList = horses;
     },
   },
 
   actions: {
     [Actions.GENERATE_HORSES]({ commit }: HorsesContext) {
-      const horses: HorsesTypes[] = Array.from(
+      const horses: Horse[] = Array.from(
         { length: TOTAL_HORSES },
         (_, index) => ({
           id: index,
@@ -44,4 +44,4 @@ const insex: Module<HorsesState, RootState> = {
   },
 };
 
-export default insex;
+export default index;
